@@ -9,7 +9,7 @@ This project implements the algorithms described in the paper:
     <b> Fig. 1: Sin Wave Generation 31.25kHz PWM</b>
 </p>
 
-Title: Bit Manipulations and Hardware Optimizations for Fast Transcendental Functions in Edge and IoT Devices
+**Title: Bit Manipulations and Hardware Optimizations for Fast Transcendental Functions in Edge and IoT Devices**
 
 Author: Georgi Petrov, PhD
 Affiliation: Department of Telecommunications, New Bulgarian University
@@ -23,7 +23,7 @@ Benchmarking across representative platforms—including AVR, ARM Cortex-M varia
 Keywords: Bit manipulations, hardware optimizations, CORDIC, Look-Up Tables (LUT), Edge devices, IoT, fast inverse square root, embedded machine learning, IEEE-754.
 
 
-Fast Shannon Entropy Calculation with LUT & Linear Interpolation 
+**Fast Shannon Entropy Calculation with LUT & Linear Interpolation**
 [Download LOG2](./CORDIC_BRIC/LUT_LOG)
 
 This project provides a high-performance implementation of Shannon Entropy calculation optimized for microcontrollers (Arduino, ESP32, STM32). It compares the standard floating-point approach (math.h) against a Look-Up Table (LUT) method with linear interpolation.
@@ -64,7 +64,6 @@ This project implements a high-performance sine wave generator for Arduino Mega 
     Filter: Connect a simple Low-Pass RC Filter to Pin 9 to convert the PWM signal into a clean analog sine wave.
         Recommended: R=4.7kΩ, C=100nF.
 
-
 3. Software Configuration
 The code is optimized for speed and accuracy. You can tune the signal using the following global variables:
     ANGLE_STEP: Controls the frequency of the sine wave. A larger step results in a higher frequency but lower resolution.
@@ -89,7 +88,7 @@ TCCR2B = (TCCR2B & 0b11111000) | 0x01; // Sets Pin 9 PWM to 31.37kHz
 📈 Performance
 The CORDIC algorithm avoids heavy floating-point sin() and cos() calls, making it ideal for real-time signal generation on 8-bit AVR processors. Combined with the high-speed PWM, it produces a high-fidelity waveform suitable for testing, audio synthesis, or power electronics simulation.
 
-
+**Python-to-C++ pipeline for generating CORDIC engines and log-scaled LUT**
 A comprehensive framework for optimizing transcendental functions on IoT devices. Features a Python-to-C++ pipeline for generating CORDIC engines and log-scaled Look-Up Tables (LUTs) in Q8.8 fixed-point format. Includes automated benchmarking for Shannon Entropy and sine wave generation on Arduino Mega.
 
 1. CORDIC Engine Group
