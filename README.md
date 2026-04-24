@@ -89,5 +89,21 @@ TCCR2B = (TCCR2B & 0b11111000) | 0x01; // Sets Pin 9 PWM to 31.37kHz
 📈 Performance
 The CORDIC algorithm avoids heavy floating-point sin() and cos() calls, making it ideal for real-time signal generation on 8-bit AVR processors. Combined with the high-speed PWM, it produces a high-fidelity waveform suitable for testing, audio synthesis, or power electronics simulation.
 
-Why use this?
-In real-time embedded systems (like signal processing or cryptography), calculating logarithms is computationally expensive. This library allows you to estimate entropy in real-time with significantly lower CPU overhead while keeping the error margin (Abs Diff) as low as ~0.03.
+
+A comprehensive framework for optimizing transcendental functions on IoT devices. Features a Python-to-C++ pipeline for generating CORDIC engines and log-scaled Look-Up Tables (LUTs) in Q8.8 fixed-point format. Includes automated benchmarking for Shannon Entropy and sine wave generation on Arduino Mega.
+
+1. CORDIC Engine Group
+CORDIC_BRIC.py: Implements an advanced "BRIC" CORDIC variation. It includes a 3rd-degree polynomial error compensation model to achieve high precision with a minimal number of iterations—ideal for processors without a hardware Floating Point Unit (FPU).
+CORDIC_BRIC_CLASIC.py: A benchmarking tool used to compare the optimized BRIC method against the standard CORDIC implementation, verifying the accuracy gains across the 0–360° range.
+
+2. LUT Generation Group
+LUT_LOG_GENERATOR_1.py: Generates a logarithmic-scale Look-Up Table (LUT). By sampling uniformly across log(p) rather than p, it drastically improves precision for low-probability values, which is critical for accurate Shannon Entropy calculations.
+LUT_GENERATOR_1.py / LUT_GENERATOR_2.py: Automate the creation of C++ header files. They convert mathematical curves into Q8.8 Fixed-Point format (scaling values by 256), allowing 8-bit microcontrollers to perform "pseudo-float" math using fast integer operations.
+
+3. Statistical Testing Group (Histograms)
+HISTOGRAM_GENERATOR.py & HISTOGRAM_GENERATOR_1.py: These scripts create various synthetic datasets (Gaussian, Uniform, Bimodal, and Exponential distributions). They allow you to test how your entropy algorithm handles different data behaviors in a controlled environment.
+
+4. Analysis & Validation
+LUT_SHANNON_LOGTABLE.py: Visualizes the interpolation error between a standard linear LUT and a log-scaled LUT. This provides the mathematical justification for using log-sampling to reduce the "Abs Diff" (Absolute Difference) in entropy results.
+
+LUT_SHANNON_PNG.py: Generates plots comparing the theoretical log2​(p) curve against the quantized LUT values, highlighting the benefits of linear interpolation for smoothing step-errors.
