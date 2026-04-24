@@ -50,6 +50,7 @@ C++
 CORDIC-Based Sine Wave Generator via PWM [Download Sin Wave Gen](./CORDIC_BRIC/CORDIC_SIN)
 [Download PDF Speed Comparison](./CORDIC_BRIC/NEW_CORDIC)
 This project implements a high-performance sine wave generator for Arduino Mega using the CORDIC (Coordinate Rotation Digital Computer) algorithm. It uses hardware timer manipulation to achieve high-frequency PWM, which is then smoothed by an external RC filter.
+![image](./CORDIC_BRIC/CORDIC_SIN/sin.jpg)
 🚀 Quick Start Guide
 1. Hardware Setup
     Microcontroller: Arduino Mega 2560 (or Uno/Nano).
@@ -57,13 +58,14 @@ This project implements a high-performance sine wave generator for Arduino Mega 
     Filter: Connect a simple Low-Pass RC Filter to Pin 9 to convert the PWM signal into a clean analog sine wave.
         Recommended: R=4.7kΩ, C=100nF.
 
-2. Software Configuration
+
+3. Software Configuration
 The code is optimized for speed and accuracy. You can tune the signal using the following global variables:
     ANGLE_STEP: Controls the frequency of the sine wave. A larger step results in a higher frequency but lower resolution.
     LUT_STEPS: Number of CORDIC iterations (1–16).
     Tip: For 8-bit PWM, 10 steps are usually sufficient and faster than 16.
 
-3. PWM Frequency Boost
+4. PWM Frequency Boost
 By default, the code modifies Timer 2 (on Mega) to run at 31.37 kHz by setting the prescaler to 1. This is critical for:
     Moving PWM noise beyond the audible range.
     Allowing for a smaller, more responsive RC filter.
