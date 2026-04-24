@@ -19,7 +19,7 @@ Keywords: Bit manipulations, hardware optimizations, CORDIC, Look-Up Tables (LUT
 
 
 Fast Shannon Entropy Calculation with LUT & Linear Interpolation 
-[Download PDF Theory](./CORDIC_BRIC/LUT_LOG)
+[Download LOG2](./CORDIC_BRIC/LUT_LOG)
 
 This project provides a high-performance implementation of Shannon Entropy calculation optimized for microcontrollers (Arduino, ESP32, STM32). It compares the standard floating-point approach (math.h) against a Look-Up Table (LUT) method with linear interpolation.
 🚀 Performance Summary
@@ -46,6 +46,40 @@ Based on benchmark tests using an exponential distribution:
 To test different data distributions, simply change the include directive in the main file:
 C++
 #include "hist_expo.h"  // Change to "hist_gaus.h" or "hist_uniform.h"
+
+CORDIC-Based Sine Wave Generator via PWM [Download Sin Wave Gen](./CORDIC_BRIC/CORDIC_SIN)
+[Download PDF Speed Comparison](./CORDIC_BRIC/NEW_CORDIC)
+This project implements a high-performance sine wave generator for Arduino Mega using the CORDIC (Coordinate Rotation Digital Computer) algorithm. It uses hardware timer manipulation to achieve high-frequency PWM, which is then smoothed by an external RC filter.
+🚀 Quick Start Guide
+1. Hardware Setup
+    Microcontroller: Arduino Mega 2560 (or Uno/Nano).
+    Output Pin: Digital Pin 9.
+    Filter: Connect a simple Low-Pass RC Filter to Pin 9 to convert the PWM signal into a clean analog sine wave.
+        Recommended: R=4.7kΩ, C=100nF.
+
+2. Software Configuration
+The code is optimized for speed and accuracy. You can tune the signal using the following global variables:
+    ANGLE_STEP: Controls the frequency of the sine wave. A larger step results in a higher frequency but lower resolution.
+    LUT_STEPS: Number of CORDIC iterations (1–16).
+    Tip: For 8-bit PWM, 10 steps are usually sufficient and faster than 16.
+
+3. PWM Frequency Boost
+By default, the code modifies Timer 2 (on Mega) to run at 31.37 kHz by setting the prescaler to 1. This is critical for:
+    Moving PWM noise beyond the audible range.
+    Allowing for a smaller, more responsive RC filter.
+
+C++
+// Inside setup()
+TCCR2B = (TCCR2B & 0b11111000) | 0x01; // Sets Pin 9 PWM to 31.37kHz
+
+4. How to Run
+    Open the project in the Arduino IDE.
+    Upload the sketch to your Arduino Mega.
+    Connect an oscilloscope or an amplifier to the output of your RC filter.
+    (Optional) Comment out Serial.print statements in the loop() to achieve the maximum possible signal frequency.
+
+📈 Performance
+The CORDIC algorithm avoids heavy floating-point sin() and cos() calls, making it ideal for real-time signal generation on 8-bit AVR processors. Combined with the high-speed PWM, it produces a high-fidelity waveform suitable for testing, audio synthesis, or power electronics simulation.
 
 Why use this?
 In real-time embedded systems (like signal processing or cryptography), calculating logarithms is computationally expensive. This library allows you to estimate entropy in real-time with significantly lower CPU overhead while keeping the error margin (Abs Diff) as low as ~0.03.
