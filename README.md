@@ -4,7 +4,7 @@ This project implements the algorithms described in the paper:
 
 ### Oscilloscope Capture
 <p align="center">
-  <img src="./CORDIC_BRIC/NEW_CORDIC/sin.jpeg" width="500" alt="Sine Wave Capture">
+  <img src="./CORDIC_BRIC/CORDIC_SIN/sin.jpeg" width="500" alt="Sine Wave Capture">
   <br>
     <b> Fig. 1: Sin Wave Generation 31.25kHz PWM</b>
 </p>
