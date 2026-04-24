@@ -2,12 +2,17 @@
 This project implements the algorithms described in the paper: 
 [Download PDF Theory](./CORDIC_BRIC/Paper_BG_AI-4-2025.pdf)
 
+### Oscilloscope Capture
+<p align="center">
+  <img src="./CORDIC_BRIC/NEW_CORDIC/sin.jpeg" width="500" alt="Sine Wave Capture">
+  <br>
+    <b> Fig. 1: Sin Wave Generation 31.25kHz PWM</b>
+</p>
+
 Title: Bit Manipulations and Hardware Optimizations for Fast Transcendental Functions in Edge and IoT Devices
 
 Author: Georgi Petrov, PhD
-
 Affiliation: Department of Telecommunications, New Bulgarian University
-
 Abstract:
 Fast and energy-efficient evaluation of transcendental functions—such as logarithms, exponentials, square roots, and trigonometric operations—is critical for real-time signal processing and on-device AI inference in Edge and IoT systems. This paper surveys and experimentally validates a set of lightweight techniques, primarily IEEE-754 based bit-level manipulations (bit tricks), alongside code- and hardware-level optimizations that significantly accelerate these functions on resource-constrained microcontrollers.
 
@@ -51,7 +56,7 @@ CORDIC-Based Sine Wave Generator via PWM [Download Sin Wave Gen](./CORDIC_BRIC/C
 
 [Download PDF Speed Comparison](./CORDIC_BRIC/NEW_CORDIC)
 This project implements a high-performance sine wave generator for Arduino Mega using the CORDIC (Coordinate Rotation Digital Computer) algorithm. It uses hardware timer manipulation to achieve high-frequency PWM, which is then smoothed by an external RC filter.
-![Sin Wave oscilloscope Screenshor](./CORDIC_BRIC/CORDIC_SIN/sin.jpeg)
+
 🚀 Quick Start Guide
 1. Hardware Setup
     Microcontroller: Arduino Mega 2560 (or Uno/Nano).
