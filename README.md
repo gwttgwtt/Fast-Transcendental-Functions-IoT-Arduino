@@ -105,5 +105,4 @@ HISTOGRAM_GENERATOR.py & HISTOGRAM_GENERATOR_1.py: These scripts create various 
 
 4. Analysis & Validation
 LUT_SHANNON_LOGTABLE.py: Visualizes the interpolation error between a standard linear LUT and a log-scaled LUT. This provides the mathematical justification for using log-sampling to reduce the "Abs Diff" (Absolute Difference) in entropy results.
-
 LUT_SHANNON_PNG.py: Generates plots comparing the theoretical log2​(p) curve against the quantized LUT values, highlighting the benefits of linear interpolation for smoothing step-errors.
