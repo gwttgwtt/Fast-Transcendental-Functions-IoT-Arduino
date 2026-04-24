@@ -2,9 +2,6 @@
 This project implements the algorithms described in the paper: 
 [Download PDF Theory](./CORDIC_BRIC/Paper_BG_AI-4-2025.pdf)
 
-Ето обновеното и допълнено резюме (Abstract) на английски език. В него е добавена информацията, че в текущата версия на разработката синусът се изчислява чрез CORDIC, а логаритъмът се базира на Look-Up Tables (LUT).
-Abstract
-
 Title: Bit Manipulations and Hardware Optimizations for Fast Transcendental Functions in Edge and IoT Devices
 
 Author: Georgi Petrov, PhD
